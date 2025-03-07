@@ -471,6 +471,7 @@
   "record.metadata.languages": "Langues",
   "record.metadata.lastUpdate": "Mis à jour le {date}",
   "record.metadata.links": "Liens",
+  "record.metadata.maplink": "Accéder à la carte",
   "record.metadata.noUsage": "Aucune condition d'utilisation spécifiée pour ces données",
   "record.metadata.otherConstraints": "Limitations d'usage",
   "record.metadata.owner": "Catalogue d'origine",

@@ -31,6 +31,15 @@
           *ngIf="showOverlay"
         >
         </gn-ui-image-overlay-preview>
+        <a
+        *ngIf="(isMap$ | async) === true"
+        [href]="loginUrl"
+        target="_blank"
+        class="gn-ui-btn-primary flex justify-start text-left w-full mb-5"
+        translate
+        >
+          record.metadata.maplink
+        </a>
         <gn-ui-metadata-contact
           (organizationClick)="onOrganizationClick($event)"
           [metadata]="metadataViewFacade.metadata$ | async"

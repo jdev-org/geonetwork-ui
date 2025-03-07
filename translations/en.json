@@ -471,6 +471,7 @@
   "record.metadata.languages": "Languages",
   "record.metadata.lastUpdate": "Last updated on {date}",
   "record.metadata.links": "Links",
+  "record.metadata.maplink": "Access the carte",
   "record.metadata.noUsage": "No usage conditions specified for this dataset.",
   "record.metadata.otherConstraints": "Additional Conditions",
   "record.metadata.owner": "Catalog of origin",

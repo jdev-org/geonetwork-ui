@@ -11,7 +11,7 @@ import {
   MetadataQualityComponent,
 } from '@geonetwork-ui/ui/elements'
 import { combineLatest } from 'rxjs'
-import { filter, map, mergeMap } from 'rxjs/operators'
+import { filter, map, mergeMap, switchMap } from 'rxjs/operators'
 import { OrganizationsServiceInterface } from '@geonetwork-ui/common/domain/organizations.service.interface'
 import {
   Keyword,
@@ -27,6 +27,9 @@ import { RecordOtherlinksComponent } from '../record-otherlinks/record-otherlink
 import { RecordRelatedRecordsComponent } from '../record-related-records/record-related-records.component'
 import { TranslateModule } from '@ngx-translate/core'
 import { RecordDataPreviewComponent } from '../record-data-preview/record-data-preview.component'
+import { SearchApiService } from '@geonetwork-ui/data-access/gn4'
+import { ElasticsearchService } from '@geonetwork-ui/api/repository'
+import { Gn4SearchResults } from '@geonetwork-ui/api/metadata-converter'
 
 @Component({
   selector: 'datahub-record-metadata',
@@ -100,6 +103,27 @@ export class RecordMetadataComponent {
     mergeMap((uuid) => this.sourceService.getSourceLabel(uuid))
   )
 
+  isMap$ = this.metadataViewFacade.metadata$.pipe(
+    filter((record) => !!record?.uniqueIdentifier),
+    switchMap((record) => 
+      this.gn4SearchApi
+      .search(
+        'bucket',
+        null,
+        JSON.stringify(
+          this.gn4SearchHelper.getMetadataByIdPayload(record?.uniqueIdentifier)
+        )
+      )
+      .pipe(
+        map((results: Gn4SearchResults) => {
+          return results.hits.hits[0]._source.resourceType
+            .some(type => ['map', 'interactiveMap'].includes(type))
+        })
+      )
+    ),
+    filter(Boolean)
+  )
+  
   errorTypes = ErrorType
 
   thumbnailUrl$ = this.metadataViewFacade.metadata$.pipe(
@@ -121,7 +145,9 @@ export class RecordMetadataComponent {
     public metadataViewFacade: MdViewFacade,
     private searchService: SearchService,
     private sourceService: SourcesService,
-    private orgsService: OrganizationsServiceInterface
+    private orgsService: OrganizationsServiceInterface,
+    private gn4SearchApi: SearchApiService,
+    private gn4SearchHelper: ElasticsearchService,
   ) {}
 
   onInfoKeywordClick(keyword: Keyword) {
