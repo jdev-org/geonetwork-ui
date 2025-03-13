@@ -139,6 +139,10 @@ export class RecordMetadataComponent {
     })
   )
 
+  otherLinks$ = this.metadataViewFacade.otherLinks$.pipe(
+    map((links) => links || null),
+  )
+
   showOverlay = true
 
   constructor(
