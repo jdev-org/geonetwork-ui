@@ -21,7 +21,13 @@
     class="content grid grow relative sm:pl-6 sm:pr-12"
     style="grid-template-columns: auto 70px"
   >
-    <div class="mb-3 mt-5 sm:mt-2">
+    <div class="flex mb-3 mt-5 sm:mt-2">
+      <span 
+      *ngIf="record.kind === 'reuse' && record.reuseType === 'map'"
+      class="badge mr-3"
+      translate>
+      results.list.item.map
+    </span>
       <div
         class="font-title text-21 text-title line-clamp-2 col-start-1 col-span-2 sm:line-clamp-1 group-hover:text-primary transition-colors"
         data-cy="recordTitle"

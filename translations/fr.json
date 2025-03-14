@@ -536,6 +536,7 @@
   "results.sortBy.popularity": "Popularité",
   "results.sortBy.qualityScore": "Indicateur de qualité",
   "results.sortBy.relevancy": "Pertinence",
+  "results.list.item.map": "Carte",
   "search.autocomplete.error": "Les suggestions ne peuvent pas être récupérées",
   "search.error.couldNotReachApi": "Problème de connexion à l'API",
   "search.error.organizationHasNoDataset": "Cette organisation n'a pas encore de données.",
