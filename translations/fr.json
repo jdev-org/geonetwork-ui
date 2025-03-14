@@ -551,7 +551,7 @@
   "search.filters.changeDate": "Mise à jour",
   "search.filters.clear": "Réinitialiser",
   "search.filters.contact": "Contacts",
-  "search.filters.format": "Formats",
+  "search.filters.format": "Type",
   "search.filters.inspireKeyword": "Mot-clé INSPIRE",
   "search.filters.isSpatial": "Données spatiales",
   "search.filters.isSpatial.no": "Non-géolocalisées",

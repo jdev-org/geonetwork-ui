@@ -551,7 +551,7 @@
   "search.filters.changeDate": "Updated",
   "search.filters.clear": "Reset",
   "search.filters.contact": "Contacts",
-  "search.filters.format": "Formats",
+  "search.filters.format": "Type",
   "search.filters.inspireKeyword": "INSPIRE keyword",
   "search.filters.isSpatial": "Is spatial data",
   "search.filters.isSpatial.no": "Non-spatial",
