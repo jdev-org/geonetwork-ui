@@ -1,5 +1,22 @@
 <!doctype html>
 <html lang="en" class="overflow-y-scroll">
+  <style>
+    @font-face {
+      font-family: 'Marianne';
+      src: url('/assets/fonts/Marianne-Regular.woff2') format('woff2'),
+        url('/assets/fonts/Marianne-Regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --fontMarianne: "Marianne", sans-serif;
+    }
+
+    body, html, * {
+      font-family: var(--fontMarianne) !important;
+    }
+  </style>
   <head>
     <meta charset="utf-8" />
     <title>Datahub</title>

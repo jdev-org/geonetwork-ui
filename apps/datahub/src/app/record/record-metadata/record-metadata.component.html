@@ -22,6 +22,23 @@
           </gn-ui-metadata-info>
         </div>
         <div class="flex flex-col gap-5">
+          <!-- <gn-ui-image-overlay-preview
+            class="block h-[185px] mb-5"
+            [imageUrl]="thumbnailUrl$ | async"
+            (isPlaceholderShown)="showOverlay = !$event"
+            *ngIf="showOverlay"
+          >
+          </gn-ui-image-overlay-preview> -->
+            <!-- Màj la condition -->
+          <a
+            *ngIf="(isMap$ | async) === true && (otherLinks$ | async)?.[0]?.url" 
+            [href]="(otherLinks$ | async)?.[0]?.url"
+            target="_blank"
+            class="gn-ui-btn-secondary flex justify-start text-left w-full"
+            translate
+          >
+            record.metadata.maplink
+          </a>
           <gn-ui-metadata-contact
             (organizationClick)="onOrganizationClick($event)"
             [metadata]="metadataViewFacade.metadata$ | async"

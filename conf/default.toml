@@ -46,15 +46,15 @@ proxy_path = ""
 #  - for font families: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family
 #  - for background: https://developer.mozilla.org/en-US/docs/Web/CSS/background
 [theme]
-primary_color = "#c82850"
-secondary_color = "#001638"
-main_color = "#555"          # All-purpose text color
+primary_color = "#009099"
+secondary_color = "#cfb235"
+main_color = "#555" # All-purpose text color
 background_color = "#fdfbff"
 
 # These optional parameters indicate which background should be used for the main header and the text color used
 # on top of the background. The color should be chosen to contrast well with the background (defaults to white).
 # Note: The search header does not use the header_foreground_color as it allows futher customisation via HTML.
-# header_background = "center /cover url('assets/img/header_bg.webp')" or "var(--color-gray-500)"
+header_background = "center /cover url('assets/img/img_sanitaire_1.webp')"
 # header_foreground_color = 'white'
 
 # This optional parameter allows to override the fallback image that should be used for thumbnails,
@@ -84,8 +84,7 @@ background_color = "#fdfbff"
 # The following fields can be used for filtering: 'organization', 'format', 'publicationYear', 'standard', 'inspireKeyword', 'keyword', 'topic', 'isSpatial', 'license', 'resourceType', 'representationType', 'producerOrg', 'publisherOrg'
 # If not configured, the default values are 'organization', 'format', 'publicationYear', 'topic', 'isSpatial', 'license'
 # Note that some links in the datahub app set an 'organization' filter. So this field is needed to allow unsetting such filters.
-# WARNING: 'resourceType' filter has been deprecated, please use 'recordKind' instead. Breaking change: 'resourceType' filter won't retrieve featureCatalog anymore.
-# advanced_filters = ['organization', 'format', 'publicationYear', 'topic', 'isSpatial', 'license']
+advanced_filters = ['resourceType', 'organization', 'format', 'publicationYear', 'topic', 'isSpatial', 'license']
 
 # One or several search presets can be defined here; every search preset is composed of:
 # - a name (which can be a translation key)

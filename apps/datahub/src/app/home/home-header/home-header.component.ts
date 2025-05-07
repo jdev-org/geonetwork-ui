@@ -26,6 +26,8 @@ import { lastValueFrom } from 'rxjs'
 import { CatalogRecord } from '@geonetwork-ui/common/domain/model/record'
 import { sortByFromString } from '@geonetwork-ui/util/shared'
 import { PlatformServiceInterface } from '@geonetwork-ui/common/domain/platform.service.interface'
+import { Router } from '@angular/router'
+
 
 marker('datahub.header.myfavorites')
 marker('datahub.header.lastRecords')
@@ -57,7 +59,8 @@ export class HomeHeaderComponent {
     public searchFacade: SearchFacade,
     private searchService: SearchService,
     private platformService: PlatformServiceInterface,
-    private fieldsService: FieldsService
+    private fieldsService: FieldsService,
+    private router: Router
   ) {}
 
   displaySortBadges$ = this.routerFacade.currentRoute$.pipe(
@@ -82,6 +85,12 @@ export class HomeHeaderComponent {
 
   clearSearchAndSort(sort: SortByField): void {
     this.searchService.setSortAndFilters({}, sort)
+  }
+
+  filterMaps(isMap: boolean) {
+    this.router.navigate(['/search'], { 
+      queryParams: { resourceType: isMap ? [ 'interactiveMap', 'map'] : ['dataset'] } 
+    });
   }
 
   async clearSearchAndFilterAndSort(customSearchParameters: SearchPreset) {

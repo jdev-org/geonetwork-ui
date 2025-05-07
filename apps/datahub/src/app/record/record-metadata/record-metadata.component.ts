@@ -17,7 +17,7 @@ import {
   ServiceCapabilitiesComponent,
 } from '@geonetwork-ui/ui/elements'
 import { combineLatest, ReplaySubject } from 'rxjs'
-import { filter, map, mergeMap, startWith } from 'rxjs/operators'
+import { filter, map, mergeMap, startWith, switchMap, tap } from 'rxjs/operators'
 import { OrganizationsServiceInterface } from '@geonetwork-ui/common/domain/organizations.service.interface'
 import {
   Keyword,
@@ -36,6 +36,9 @@ import { RecordDataPreviewComponent } from '../record-data-preview/record-data-p
 import { ButtonComponent } from '@geonetwork-ui/ui/inputs'
 import { NgIcon, provideIcons } from '@ng-icons/core'
 import { matChatOutline } from '@ng-icons/material-icons/outline'
+import { SearchApiService } from '@geonetwork-ui/data-access/gn4'
+import { Gn4SearchResults } from '@geonetwork-ui/api/metadata-converter'
+import { ElasticsearchService } from '@geonetwork-ui/api/repository'
 
 @Component({
   selector: 'datahub-record-metadata',
@@ -101,6 +104,8 @@ export class RecordMetadataComponent {
 
     return condition ?? (() => false)
   }
+
+  showOverlay = true
 
   apiLinks$ = this.metadataViewFacade.apiLinks$
 
@@ -189,10 +194,54 @@ export class RecordMetadataComponent {
 
   errorTypes = ErrorType
 
+  isMap$ = this.metadataViewFacade.metadata$.pipe(
+    filter((record) => !!record?.uniqueIdentifier),
+    switchMap((record) => 
+      this.gn4SearchApi
+      .search(
+        'bucket',
+        null,
+        JSON.stringify(
+          this.gn4SearchHelper.getMetadataByIdPayload(record?.uniqueIdentifier)
+        )
+      )
+      .pipe(
+        map((results: Gn4SearchResults) => {
+          return results.hits.hits[0]._source.resourceType
+            .some(type => ['map', 'interactiveMap'].includes(type))
+        })
+      )
+    ),
+    filter(Boolean)
+  )
+
+  thumbnailUrl$ = this.metadataViewFacade.metadata$.pipe(tap((metadata) => {
+    console.log('metadata reçu :', metadata);
+  }),
+    map((metadata) => {
+      // in order to differentiate between metadata not loaded yet
+      // and url not defined
+      // the content-ghost of image-overlay-preview relies on this differentiation
+      if (metadata?.overviews === undefined) {
+        return undefined
+      } else {
+        const url = metadata.overviews?.[0]?.url ?? null;
+        console.log('URL trouvée :', url);
+        return metadata?.overviews?.[0]?.url ?? null
+      }
+    })
+  )
+
+  otherLinks$ = this.metadataViewFacade.otherLinks$.pipe(
+    map((links) => links || null),
+  )
+
   constructor(
     public metadataViewFacade: MdViewFacade,
     private searchService: SearchService,
     private sourceService: SourcesService,
+    private gn4SearchApi: SearchApiService,
+    private gn4SearchHelper: ElasticsearchService,
     private orgsService: OrganizationsServiceInterface
   ) {}
 

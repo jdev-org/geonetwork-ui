@@ -63,6 +63,24 @@
             <span translate="">datahub.header.popularRecords</span>
           </button>
         </div>
+        <div>
+          <button
+            type="button"
+            class="badge-btn bg-primary-opacity-50 hover-bg-primary-opacity-100"
+            (click)="filterMaps(true)"
+          >
+            <span translate="">datahub.header.maps</span>
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            class="badge-btn bg-primary-opacity-50 hover-bg-primary-opacity-100"
+            (click)="filterMaps(false)"
+          >
+            <span translate="">datahub.header.data</span>
+          </button>
+        </div>
         <div *ngFor="let preset of searchConfig?.SEARCH_PRESET">
           <div>
             <button
