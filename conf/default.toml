@@ -46,15 +46,15 @@ proxy_path = ""
 #  - for font families: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family
 #  - for background: https://developer.mozilla.org/en-US/docs/Web/CSS/background
 [theme]
-primary_color = "#c82850"
-secondary_color = "#001638"
-main_color = "#555"          # All-purpose text color
+primary_color = "#dd0219"
+secondary_color = "#142e71"
+main_color = "#555" # All-purpose text color
 background_color = "#fdfbff"
 
 # These optional parameters indicate which background should be used for the main header and the text color used
 # on top of the background. The color should be chosen to contrast well with the background (defaults to white).
 # Note: The search header does not use the header_foreground_color as it allows futher customisation via HTML.
-# header_background = "center /cover url('assets/img/header_bg.webp')" or "var(--color-gray-500)"
+header_background = "linear-gradient(90deg,#142e71 0,#164193 50%,#164193 60%,#142e71 100%)"
 # header_foreground_color = 'white'
 
 # This optional parameter allows to override the fallback image that should be used for thumbnails,
@@ -200,3 +200,8 @@ background_color = "#fdfbff"
 #     Welcome to <span class="text-primary">Organization</span>'s<br>
 #     wonderful <span style="font-size: 1.2em;">data catalogue</span>
 #     """
+
+[translations.fr]
+datahub.header.title.html = '<h1 class="text-white">Toutes les données</h1>'
+search.field.any.placeholder = 'Rechercher une donnée...'
+datahub.header.datasets = 'DONNÉES'

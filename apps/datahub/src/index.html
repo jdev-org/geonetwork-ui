@@ -1,5 +1,28 @@
 <!doctype html>
 <html lang="en" class="overflow-y-scroll">
+  <style>
+    @font-face {
+      font-family: 'Amaranth';
+      src: url('/assets/fonts/Amaranth-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style:normal;
+    }
+
+    @font-face {
+      font-family: 'Amaranth';
+      src: url('/assets/fonts/Amaranth-Bold.ttf') format('truetype');
+      font-weight: bold;
+      font-style:normal;
+    }
+
+    :root {
+      --fontAmaranth: "Amaranth", sans-serif !important;
+    }
+    
+    h1, h2, h3, h4, h5, h6, strong, b {
+      font-family: var(--fontAmaranth) !important;
+    }
+  </style>
   <head>
     <meta charset="utf-8" />
     <title>Datahub</title>
