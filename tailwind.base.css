@@ -74,9 +74,10 @@
     --bg-hover: var(--gn-ui-button-bg-hover, var(--color-background));
     --font-size: var(--gn-ui-button-font-size, 1em);
     --color: var(--gn-ui-button-color, var(--color-main));
+    --color-hover: var(--gn-ui-button-color-hover, var(--color-main));
     @apply flex flex-row items-center justify-center
       text-[length:--font-size] leading-none
-      text-[color:--color]
+      text-[color:--color] hover:text-[color:--color-hover]
       p-[--padding] rounded-[--rounded] w-[--width] h-[--height] overflow-hidden
       border-[length:--border-width] bg-[--background] transition-all duration-100
       hover:bg-[--bg-hover] focus:bg-[--bg-hover] active:bg-[--background]

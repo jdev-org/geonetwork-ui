@@ -3,11 +3,16 @@
   --gn-ui-button-height: 32px;
   --gn-ui-button-width: 40px;
   --gn-ui-button-color: black;
-  --gn-ui-button-background: var(--color-primary-white);
-  --gn-ui-button-bg-hover: var(--color-primary-lightest);
+  --gn-ui-button-color-hover: white;
+  --gn-ui-button-background: var(--color-white);
+  --gn-ui-button-bg-hover: var(--color-primary);
   --gn-ui-button-padding: 4px;
-  --gn-ui-button-background: var(--color-primary-white);
-  --gn-ui-button-bg-hover: var(--color-primary-lightest);
+  --gn-ui-button-background: var(--color-white);
+  --gn-ui-button-bg-hover: var(--color-primary);
   --star-toggle-enabled-color: black;
   --star-toggle-disabled-color: black;
+}
+
+:host ::ng-deep svg {
+  fill: currentColor !important;
 }
